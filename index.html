@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toko Online - Makanan & Elektronik</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: white;
+      padding: 20px;
+    }
+    h1 { text-align: center; color: #00bfff; }
+    h2 { margin-top: 40px; color: #ff66cc; }
+    .produk {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .card {
+      background: #1e1e1e;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      transition: 0.3s;
+    }
+    .card:hover {
+      transform: scale(1.05);
+      background-color: #222;
+    }
+    .nama { font-size: 18px; font-weight: bold; color: #00bfff; }
+    .harga { color: #00ff99; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+  <h1>Toko Online</h1>
+
+  <h2>Produk Makanan</h2>
+  <div class="produk" id="produk-makanan"></div>
+
+  <h2>Produk Elektronik</h2>
+  <div class="produk" id="produk-elektronik"></div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      // 🔹 Ambil data dari API Makanan (punya kelompok 3 sendiri)
+      $.getJSON("https://kyyajaa.github.io/toko-makanan/api-makanan.json", function(data) {
+        let konten = "";
+        data.forEach(function(item) {
+          konten += `
+            <div class="card">
+              <p class="nama">${item.nama}</p>
+              <p>${item.deskripsi}</p>
+              <p class="harga">Harga: Rp ${item.harga.toLocaleString()}</p>
+              <p>Stok: ${item.stok}</p>
+            </div>
+          `;
+        });
+        $("#produk-makanan").html(konten);
+      });
+
+      // 🔹 Ambil data dari API Elektronik (punya kelompok 1)
+      $.getJSON("https://kyyajaa.github.io/toko-elektronik/api-elektronik.json", function(data) {
+        let konten = "";
+        data.forEach(function(item) {
+          konten += `
+            <div class="card">
+              <p class="nama">${item.nama}</p>
+              <p>${item.deskripsi}</p>
+              <p class="harga">Harga: Rp ${item.harga.toLocaleString()}</p>
+              <p>Stok: ${item.stok}</p>
+            </div>
+          `;
+        });
+        $("#produk-elektronik").html(konten);
+      });
+    });
+  </script>
+</body>
+</html>
