@@ -1,0 +1,20 @@
+[
+  {
+    "nama": "Nasi Goreng Spesial",
+    "deskripsi": "Nasi goreng dengan telur dan ayam suwir",
+    "harga": 20000,
+    "stok": 10
+  },
+  {
+    "nama": "Es Teh Manis",
+    "deskripsi": "Minuman segar untuk teman makan",
+    "harga": 5000,
+    "stok": 30
+  },
+  {
+    "nama": "Mie Ayam Bakso",
+    "deskripsi": "Mie ayam gurih dengan tambahan bakso sapi",
+    "harga": 25000,
+    "stok": 15
+  }
+]
